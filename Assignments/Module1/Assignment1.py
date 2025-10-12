@@ -13,6 +13,7 @@
 # // Part 1: Addition and Subtraction //
 
 # Get user input
+print("// Part 1 Addition and Subtraction //")
 num1 = float(input("Enter your first number: "))
 num2 = float(input("Enter your second number: "))
 
@@ -23,11 +24,12 @@ subtraction = num1 - num2
 
 # Display results to the user
 print(f"The addition of {num1} and {num2} is: {addition}")
-print(f"The subtraction of {num1} and {num2} is: {subtraction}")
+print(f"The subtraction of {num1} and {num2} is: {subtraction}", end="\n\n")
 
 # // Part 2: Multiplication and Division //
 
 # Get user input
+print("// Part 2 Multiplication and Division //")
 num1 = float(input("Enter your first number: "))
 num2 = float(input("Enter your second number: "))
 
