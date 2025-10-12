@@ -1,0 +1,27 @@
+Pseudocode for Assignment 1
+
+// Part 1: Addition and Subtraction //
+PROGRAM START
+    get user input for num1
+    get user input for num2
+
+    variable addition = num1 + num2
+    variable subtraction = num1 - num2
+
+    display addition result
+    display subtraction result
+END PROGRAM
+
+// Part 2: Multiplication and Division //
+PROGRAM START
+    get user input for num1
+    get user input for num2
+
+    variable multiplication = num1 * num2
+
+    IF num2 is not zero THEN
+        variable division = num1 / num2
+        display division result
+    ELSE
+        display error message for division by zero
+END PROGRAM
