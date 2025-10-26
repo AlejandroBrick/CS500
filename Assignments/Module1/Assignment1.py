@@ -1,7 +1,7 @@
 # Author: Alejandro Ceballos
 # Date: 2025-10-12
 
-# Assignment 1: Creating Python Programs
+# Module 1: Critical Thinking Assignment 1
 # Part 1:
 # Write a Python program to find the addition and subtraction of two numbers.
 # Ask the user to input two numbers (num1 and num2). Given those two numbers, add them together to find the output. Also, subtract the two numbers to find the output.
