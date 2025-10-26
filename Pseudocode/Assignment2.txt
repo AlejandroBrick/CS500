@@ -1,6 +1,5 @@
 Pseudocode for Assignment 2
 
-
 PROGRAM START
     // Part 1: Meal Total Calculation //
     get user input for variable meal_charge
