@@ -1,0 +1,24 @@
+Pseudocode for Assignment 2
+
+
+PROGRAM START
+    // Part 1: Meal Total Calculation //
+    get user input for variable meal_charge
+
+    variable tip = meal_charge * 18%
+    variable tax = meal_charge * 7%
+    variable total_price = meal_charge + tip + tax
+
+    display "Total Tip(18%):" tip formatted to 2 decimal places
+    display "Total Tax(7%):" tax formatted to 2 decimal places
+    display "Total Price:" total_price formatted to 2 decimal places
+
+    // Part 2: Alarm Time Calculation //
+    get user input for variable current_time
+
+    get user input for variable wait_hours
+
+    variable alarm_time = (current_time + wait_hours) MOD 24
+
+    display alarm_time
+END PROGRAM
