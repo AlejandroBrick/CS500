@@ -1,0 +1,42 @@
+Pseudocode for Assignment5
+
+PROGRAM START
+    // Part 1: Rainfall Program //
+    get user input for variable years
+
+    variable rainfall = 0
+    variable months = years * 12
+
+    FOR year from 1 to years total
+        display "Current Year - " year
+
+        FOR month from 1 to 12
+            get user input for variable rainfall_per_month
+            rainfall = rainfall + rainfall_per_month
+        END FOR
+    END FOR
+
+    variable avg_rainfall = rainfall / months
+
+    display "Total months:" months
+    display "Total inches of rainfall:" rainfall formatted to 2 decimal places
+    display "Average rainfall for each month:" avg_rainfall formatted to 2 decimal places
+
+    // Part 2: Book Point Program //
+    get user input for variable num_purchased
+
+    IF num_purchased == 0
+        points = 0
+    ELSE IF num_purchased >= 2
+        points = 5
+    ELSE IF num_purchased >= 4
+        points = 15
+    ELSE IF num_purchased >= 6
+        points = 30
+    ELSE IF num_purchased >= 8
+        points = 60
+    ELSE IF
+        points = 0
+
+    display "You've earned a total of" points "points this month!"
+END PROGRAM
