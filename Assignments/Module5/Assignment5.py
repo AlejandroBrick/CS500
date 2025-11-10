@@ -24,7 +24,7 @@ print(f"Average rainfall for each month: {avg_rainfall:.2f} inches\n")
 
 # // Part 2: Book Point Program //
 print("// Book Point Program //")
-num_purchased = int(input("How many books have you pruchased this month?: "))
+num_purchased = int(input("How many books have you purchased this month?: "))
 
 if num_purchased == 0:
     points = 0
