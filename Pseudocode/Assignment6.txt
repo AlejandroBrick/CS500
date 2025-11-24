@@ -1,0 +1,26 @@
+Pseudocode for Assignment 6
+
+PROGRAM START
+    // Part 1: Course Lookup //
+    variable room_number_dict = {"CSC101": "3004", "CSC102": "4501", "CSC103": "6755", "NET110": "1244", "COM241": "1411"}
+    variable instructors_dict = {"CSC101": "Haynes", "CSC102": "Alvarado", "CSC103": "Rich", "NET110": "Burke", "COM241": "Lee"}
+    variable meeting_time_dict = {"CSC101": "8:00 a.m.", "CSC102": "9:00 a.m.", "CSC103": "10:00 a.m.", "NET110": "11:00 a.m.", "COM241": "1:00 p.m."}
+
+    display "Available Courses:"
+    FOR each course in room_number_dict.keys()
+        display course
+    END FOR
+
+    display blank line
+
+    get user input for variable course_number
+    convert course_number to uppercase and strip whitespace
+
+    IF course_number in room_number_dict
+        display course_number " - Room Number: " room_number_dict[course_number]
+        display course_number " - Instructor: " instructors_dict[course_number]
+        display course_number " - Meeting Time: " meeting_time_dict[course_number]
+    ELSE
+        display "Please enter a valid course number."
+    END IF
+END PROGRAM
