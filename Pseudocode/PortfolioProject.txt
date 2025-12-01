@@ -1,0 +1,169 @@
+Pseudocode for Portfolio Project
+
+PROGRAM START
+    // Part 1: ItemToPurchase Class //
+    define class ItemToPurchase
+        variable name = "none"
+        variable description = "none"
+        variable price = 0
+        variable quantity = 0
+
+        method print_item_cost()
+            total_cost = price * quantity
+            display name " - " quantity " @ $" price " = $" total_cost
+        end method
+    end class
+
+    // Part 2: ShoppingCart Class //
+    define class ShoppingCart
+        variable customer_name = "none"
+        variable current_date = "January 1, 2020"
+        variable cart_items = empty list
+
+        method add_item(ItemToPurchase)
+            append ItemToPurchase to cart_items
+        end method
+
+        method remove_item(ItemName)
+            found = false
+            FOR each item in cart_items
+                IF item.name == ItemName
+                    remove item from cart_items
+                    found = true
+                    BREAK
+                END IF
+            END FOR
+            IF not found
+                display "Item not found in cart. Nothing removed."
+            END IF
+        end method
+
+        method modify_item(ItemToPurchase)
+            found = false
+            FOR each item in cart_items
+                IF item.name == ItemToPurchase.name
+                    IF ItemToPurchase.description != "none"
+                        item.description = ItemToPurchase.description
+                    END IF
+                    IF ItemToPurchase.price != 0
+                        item.price = ItemToPurchase.price
+                    END IF
+                    IF ItemToPurchase.quantity != 0
+                        item.quantity = ItemToPurchase.quantity
+                    END IF
+                    found = true
+                    BREAK
+                END IF
+            END FOR
+            IF not found
+                display "Item not found in cart. Nothing modified."
+            END IF
+        end method
+
+        method get_num_items_in_cart()
+            total_items = 0
+            FOR each item in cart_items
+                total_items = total_items + item.quantity
+            END FOR
+            return total_items
+        end method
+
+        method get_cost_of_cart()
+            total_cost = 0
+            FOR each item in cart_items
+                total_cost = total_cost + (item.price * item.quantity)
+            END FOR
+            return total_cost
+        end method
+
+        method print_total()
+            display customer_name "'s Shopping Cart - " current_date
+
+            total_items = get_num_items_in_cart()
+
+            IF total_items > 0
+                display "Number of Items: " total_items
+                FOR each item in cart_items
+                    per_item_total = item.price * item.quantity
+                    display item.name " " item.quantity " @ $" item.price " = $" per_item_total
+                END FOR
+                total_cost = get_cost_of_cart()
+                display "Total: $" total_cost
+            ELSE
+                display "SHOPPING CART IS EMPTY"
+            END IF
+        end method
+
+        method print_descriptions()
+            display customer_name "'s Shopping Cart - " current_date
+            display "Item Descriptions"
+
+            IF get_num_items_in_cart() == 0
+                display "SHOPPING CART IS EMPTY"
+                return
+            END IF
+
+            FOR each item in cart_items
+                display item.name ": " item.description
+            END FOR
+        end method
+    end class
+
+    // Part 3: Menu and Main Program //
+    procedure print_menu(cart)
+        WHILE True
+            display "MENU"
+            display "a - Add item to cart"
+            display "r - Remove item from cart"
+            display "c - Change item quantity"
+            display "i - Output items' descriptions"
+            display "o - Output shopping cart"
+            display "q - Quit"
+
+            get user input for variable choice
+            trim and normalize choice
+
+            IF choice == 'q'
+                BREAK
+            ELSE IF choice == 'o'
+                display "OUTPUT SHOPPING CART"
+                call cart.print_total()
+            ELSE IF choice == 'i'
+                display "OUTPUT ITEMS' DESCRIPTIONS"
+                call cart.print_descriptions()
+            ELSE IF choice == 'a'
+                display "ADD ITEM TO CART"
+                get user input for variable item_name
+                get user input for variable item_description
+                get user input for variable item_price (convert to number)
+                get user input for variable item_quantity (convert to integer)
+                new_item = ItemToPurchase(item_name, item_description, item_price, item_quantity)
+                call cart.add_item(new_item)
+            ELSE IF choice == 'r'
+                display "REMOVE ITEM FROM CART"
+                get user input for variable item_name
+                call cart.remove_item(item_name)
+            ELSE IF choice == 'c'
+                display "CHANGE ITEM QUANTITY"
+                get user input for variable item_name
+                get user input for variable new_quantity (convert to integer)
+                modified_item = ItemToPurchase(item_name, "none", 0, new_quantity)
+                call cart.modify_item(modified_item)
+            ELSE
+                display "Invalid option, please try again."
+            END IF
+        END WHILE
+    end procedure
+
+    procedure main()
+        get user input for variable customer_name
+        get user input for variable current_date
+        display "Customer name: " customer_name
+        display "Today's date: " current_date
+
+        shopping_cart = ShoppingCart(customer_name, current_date)
+        call print_menu(shopping_cart)
+    end procedure
+
+    call main()
+END PROGRAM

@@ -1,6 +1,17 @@
 # Author: Alejandro Ceballos
 # Date: 11/30/2025
 
+class ItemToPurchase:    
+    def __init__(self, item_name="none", item_description="none", item_price=0, item_quantity=0):
+        self.name = item_name
+        self.description = item_description
+        self.price = item_price
+        self.quantity = item_quantity
+        
+    def print_item_cost(self):
+        total_cost = self.price * self.quantity
+        print(f"{self.name} - {self.quantity} @ ${self.price} = ${total_cost}")
+
 class ShoppingCart:
     def __init__(self, customer_name="none", current_date="January 1, 2020"):
         self.customer_name = customer_name
@@ -44,7 +55,7 @@ class ShoppingCart:
     def get_cost_of_cart(self):
         total_cost = 0
         for item in self.cart_items:
-            total_cost += item.price * item.quantity
+            total_cost += float(item.price) * int(item.quantity)
         return total_cost
 
     def print_total(self):
@@ -56,7 +67,7 @@ class ShoppingCart:
             print(f"Number of Items: {total_items}")
             
             for item in self.cart_items:
-                per_item_total = item.price * item.quantity
+                per_item_total = float(item.price) * int(item.quantity)
                 print(f"{item.name} {item.quantity} @ ${item.price} = ${per_item_total}")
             total_cost = self.get_cost_of_cart()
             
@@ -95,17 +106,31 @@ def print_menu(cart):
             case 'o':
                 print("OUTPUT SHOPPING CART")
                 cart.print_total()
+                print()
             case 'i':
                 print("OUTPUT ITEMS' DESCRIPTIONS")
                 cart.print_descriptions()
+                print()
             case 'a':
-                print("Add item to cart - Functionality not yet implemented.")
+                print("ADD ITEM TO CART")
+                item_name = input("Enter the item name: ")
+                item_description = input("Enter the item description: ")
+                item_price = float(input("Enter the item price: "))
+                item_quantity = int(input("Enter the item quantity: "))
+                new_item = ItemToPurchase(item_name, item_description, item_price, item_quantity)
+                cart.add_item(new_item)
                 print()
             case 'r':
-                print("Remove item from cart - Functionality not yet implemented.")
+                print("REMOVE ITEM FROM CART")
+                item_name = input("Enter name of item to remove: ")
+                cart.remove_item(item_name)
                 print()
             case 'c':
-                print("Change item quantity - Functionality not yet implemented.")
+                print("CHANGE ITEM QUANTITY")
+                item_name = input("Enter the item name: ")
+                new_quantity = int(input("Enter the new quantity: "))
+                modified_item = ItemToPurchase(item_name, "none", 0, new_quantity)
+                cart.modify_item(modified_item)
                 print()  
             case _:
                 print("Invalid option, please try again.")
@@ -115,6 +140,10 @@ def main():
     # Get customer name and date
     customer_name = input("Enter customer's name: ")
     current_date = input("Enter today's date: ")
+    print()
+    
+    print(f"Customer name: {customer_name}")
+    print(f"Today's date: {current_date}")
     print()
     
     shopping_cart = ShoppingCart(customer_name, current_date)
